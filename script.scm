@@ -8,7 +8,8 @@
 (define insertLinks
 		(lambda ()
 				(define examples
-						(list (list "Game of Life" "game-of-life")))
+						(list (list "." "scm2js")
+							  (list "Game of Life" "game-of-life")))
 				(define (getExampleContent lst base)
 						(if (pair? lst)
 							(let ((page (car lst)))
@@ -91,6 +92,6 @@
 											"background-color: lightslategrey;"
 											"right: 0;"
 										"}")))
-(document.write (<h1> "Scheme to Javascript examples :"))
+(document.write (<h1> "Scheme to Javascript examples"))
 (document.write (<ul>))
 (insertLinks)
