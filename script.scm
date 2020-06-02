@@ -22,7 +22,7 @@
 											  				 (car page)
 											  				 "</a> : <a href='https://github.com/roropincho/"
 											  				 (cadr page)
-											  				 "'><span></span>git repo</a></li>"))))
+											  				 "' target='_blank'><span></span>git repo</a></li>"))))
 							base))
 				(setInnerHTML (querySelector "ul")
 							  (getExampleContent examples ""))))
