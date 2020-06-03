@@ -14,169 +14,169 @@
   (lambda ()
     (define examples
       (list (list "." "scm2js")
-	    (list "Game of Life" "game-of-life")))
+            (list "Game of Life" "game-of-life")))
     (define inDev
       (list (list "Chat room" "chat-room")
-	    (list "Login system" "login-system")))
+            (list "Login system" "login-system")))
     (define (getExampleContent lst base)
       (if (pair? lst)
-	  (let ((page (car lst)))
-	    (begin
-	      (console.log "ITER")
-	      (getExampleContent (cdr lst)
-				 (string-append base
-						"<li><span class='bullet'></span><a href='https://roropincho.github.io/"
-						(cadr page)
-						"' target='_blank'><span></span>"
-						(car page)
-						"</a> : <a href='https://github.com/roropincho/"
-						(cadr page)
-						"' target='_blank'><span></span>git repo</a></li>"))))
-	  base))
+          (let ((page (car lst)))
+            (begin
+              (console.log "ITER")
+              (getExampleContent (cdr lst)
+                                 (string-append base
+                                                "<li><span class='bullet'></span><a href='https://roropincho.github.io/"
+                                                (cadr page)
+                                                "' target='_blank'><span></span>"
+                                                (car page)
+                                                "</a> : <a href='https://github.com/roropincho/"
+                                                (cadr page)
+                                                "' target='_blank'><span></span>git repo</a></li>"))))
+          base))
     (setInnerHTML (getElementById exId)
-		  (getExampleContent examples ""))
+                  (getExampleContent examples ""))
     (setInnerHTML (getElementById inDevId)
-		  (getExampleContent inDev ""))))
+                  (getExampleContent inDev ""))))
 
 (##inline-host-statement "document.title = 'Index of Scheme to Javascript projects';")
 (appendHTML (querySelector "head")
-	    (<style> type: "text/css"
-		     (string-append "* {"
-				      "border: 0;"
-				      "border-collapse: collapse;"
-				      "margin: 0;"
-				      "padding: 0;"
-				      "transition: 0.25s background-color, 0.25s color, 0.25s height, 0.25s opacity, 0.25s right, 0.25s transform;"
-				    "}"
-				    "body {"
-				      "color: darkslategrey;"
-				      "font-family: sans-serif;"
-				      "font-size: 15px;"
-				      "margin: 25px;"
-				    "}"
-				    "h1 {"
-				      "background-color: darkslategrey;"
-				      "color: white;"
-				      "font-size: 30px;"
-				      "margin: -25px;"
-				      "margin-bottom: 0;"
-				      "padding: 25px;"
-				    "}"
-				    "." grClass " {"
-				      "position: relative;"
-				    "}"
-				    "input, ." plusClass " {"
-				      "position: absolute;"
-				      "right: 0;"
-				      "top: 10px;"
-				    "}"
-				    "input {"
-				      "height: 25px;"
-				      "opacity: 0;"
-				      "width: 25px;"
-				      "z-index: 3;"
-				    "}"
-				    "input:hover {"
-				      "cursor: pointer;"
-				    "}"
-				    "input:hover + ." plusClass " {"
-				      "background-color: darkslategrey;"
-				      "cursor: pointer;"
-				    "}"
-				    "input + div + div {"
-				      "height: 0;"
-				      "overflow: hidden;"
-				    "}"
-				    "input:checked + div + div {"
-				      "height: 100%;"
-				    "}"
-				    "." plusClass " {"
-				      "border: 2px solid white;"
-				      "border-radius: 50%;"
-				      "height: 21px;"
-				      "width: 21px;"
-				      "z-index: 2;"
-				    "}"
-				    "." plusClass " div {"
-				      "background-color: white;"
-				      "height: 2px;"
-				      "left: 50%;"
-				      "position: absolute;"
-				      "top: 50%;"
-				      "transform: translate(-50%, -50%);"
-				      "width: 11px;"
-				    "}"
-				    "input:not(:checked) + ." plusClass " div:nth-child(even) {"
-				      "transform: translate(-50%, -50%) rotate(90deg);"
-				    "}"
-				    "h2 {"
-				      "background-color: darksalmon;"
-				      "border-bottom: 2px solid white;"
-				      "color: white;"
-				      "font-size: 25px;"
-				      "font-weight: normal;"
-				      "letter-spacing: 1px;"
-				      "margin: 0 -25px;"
-				      "padding: 10px 25px;"
-				    "}"
-				    "ul {"
-				      "list-style-type: none;"
-				      "margin: 0 0 50px 0;"
-				    "}"
-				    "li {"
-				      "padding: 20px 0;"
-				    "}"
-				    "li:not(:first-of-type) {"
-				      "border-top: 1px solid darksalmon;"
-				    "}"
-				    ".bullet {"
-				      "border: 2px solid darksalmon;"
-				      "border-radius: 50%;"
-				      "display: inline-block;"
-				      "height: 5px;"
-				      "margin: 0 7.5px 0 5px;"
-				      "width: 5px;"
-				    "}"
-				    "a, a:visited {"
-				      "color: lightslategrey;"
-				      "text-decoration: none;"
-				    "}"
-				    "a {"
-				      "border: 1px solid lightslategrey;"
-				      "border-radius: 5px;"
-				      "padding: 5px 10px 6px 10px;"
-				      "position: relative;"
-				    "}"
-				    "a:hover {"
-				      "color: white;"
-				    "}"
-				    "a span {"
-				      "bottom: 0;"
-				      "color: lightslategrey;"
-				      "left: 0;"
-				      "position: absolute;"
-				      "right: 100%;"
-				      "top: 0;"
-				      "z-index: -1;"
-				    "}"
-				    "a:hover span {"
-				      "background-color: lightslategrey;"
-				      "right: 0;"
-				    "}")))
+            (<style> type: "text/css"
+                     (string-append "* {"
+                                      "border: 0;"
+                                      "border-collapse: collapse;"
+                                      "margin: 0;"
+                                      "padding: 0;"
+                                      "transition: 0.25s background-color, 0.25s color, 0.25s height, 0.25s opacity, 0.25s right, 0.25s transform;"
+                                    "}"
+                                    "body {"
+                                      "color: darkslategrey;"
+                                      "font-family: sans-serif;"
+                                      "font-size: 15px;"
+                                      "margin: 25px;"
+                                    "}"
+                                    "h1 {"
+                                      "background-color: darkslategrey;"
+                                      "color: white;"
+                                      "font-size: 30px;"
+                                      "margin: -25px;"
+                                      "margin-bottom: 0;"
+                                      "padding: 25px;"
+                                    "}"
+                                    "." grClass " {"
+                                      "position: relative;"
+                                    "}"
+                                    "input, ." plusClass " {"
+                                      "position: absolute;"
+                                      "right: 0;"
+                                      "top: 10px;"
+                                    "}"
+                                    "input {"
+                                      "height: 25px;"
+                                      "opacity: 0;"
+                                      "width: 25px;"
+                                      "z-index: 3;"
+                                    "}"
+                                    "input:hover {"
+                                      "cursor: pointer;"
+                                    "}"
+                                    "input:hover + ." plusClass " {"
+                                      "background-color: darkslategrey;"
+                                      "cursor: pointer;"
+                                    "}"
+                                    "input + div + div {"
+                                      "height: 0;"
+                                      "overflow: hidden;"
+                                    "}"
+                                    "input:checked + div + div {"
+                                      "height: 100%;"
+                                    "}"
+                                    "." plusClass " {"
+                                      "border: 2px solid white;"
+                                      "border-radius: 50%;"
+                                      "height: 21px;"
+                                      "width: 21px;"
+                                      "z-index: 2;"
+                                    "}"
+                                    "." plusClass " div {"
+                                      "background-color: white;"
+                                      "height: 2px;"
+                                      "left: 50%;"
+                                      "position: absolute;"
+                                      "top: 50%;"
+                                      "transform: translate(-50%, -50%);"
+                                      "width: 11px;"
+                                    "}"
+                                    "input:not(:checked) + ." plusClass " div:nth-child(even) {"
+                                      "transform: translate(-50%, -50%) rotate(90deg);"
+                                    "}"
+                                    "h2 {"
+                                      "background-color: darksalmon;"
+                                      "border-bottom: 2px solid white;"
+                                      "color: white;"
+                                      "font-size: 25px;"
+                                      "font-weight: normal;"
+                                      "letter-spacing: 1px;"
+                                      "margin: 0 -25px;"
+                                      "padding: 10px 25px;"
+                                    "}"
+                                    "ul {"
+                                      "list-style-type: none;"
+                                      "margin: 0 0 50px 0;"
+                                    "}"
+                                    "li {"
+                                      "padding: 20px 0;"
+                                    "}"
+                                    "li:not(:first-of-type) {"
+                                      "border-top: 1px solid darksalmon;"
+                                    "}"
+                                    ".bullet {"
+                                      "border: 2px solid darksalmon;"
+                                      "border-radius: 50%;"
+                                      "display: inline-block;"
+                                      "height: 5px;"
+                                      "margin: 0 7.5px 0 5px;"
+                                      "width: 5px;"
+                                    "}"
+                                    "a, a:visited {"
+                                      "color: lightslategrey;"
+                                      "text-decoration: none;"
+                                    "}"
+                                    "a {"
+                                      "border: 1px solid lightslategrey;"
+                                      "border-radius: 5px;"
+                                      "padding: 5px 10px 6px 10px;"
+                                      "position: relative;"
+                                    "}"
+                                    "a:hover {"
+                                      "color: white;"
+                                    "}"
+                                    "a span {"
+                                      "bottom: 0;"
+                                      "color: lightslategrey;"
+                                      "left: 0;"
+                                      "position: absolute;"
+                                      "right: 100%;"
+                                      "top: 0;"
+                                      "z-index: -1;"
+                                    "}"
+                                    "a:hover span {"
+                                      "background-color: lightslategrey;"
+                                      "right: 0;"
+                                    "}")))
 (document.write (<h1> "Scheme to Javascript examples"))
 (document.write (<div> class: grClass
-		       (<h2> "Finished examples")
-		       (<input> type: 'checkbox
-				checked:)
-		       (<div> class: plusClass
-			      (<div>)
-			      (<div>))
-		       (<div> (<ul> id: exId))))
+                       (<h2> "Finished examples")
+                       (<input> type: 'checkbox
+                                checked:)
+                       (<div> class: plusClass
+                              (<div>)
+                              (<div>))
+                       (<div> (<ul> id: exId))))
 (document.write (<div> class: grClass
-		       (<h2> "Examples under construction")
-		       (<input> type: 'checkbox)
-		       (<div> class: plusClass
-			      (<div>)
-			      (<div>))
-		       (<div> (<ul> id: inDevId))))
+                       (<h2> "Examples under construction")
+                       (<input> type: 'checkbox)
+                       (<div> class: plusClass
+                              (<div>)
+                              (<div>))
+                       (<div> (<ul> id: inDevId))))
 (insertLinks)
