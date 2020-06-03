@@ -16,7 +16,9 @@
       (list (list "." "scm2js")
             (list "Game of Life" "game-of-life")))
     (define inDev
-      (list (list "Chat room" "chat-room")
+      (list (list "Card game" "card-game")
+            (list "Chat room" "chat-room")
+            (list "Form" "form")
             (list "Login system" "login-system")))
     (define (getExampleContent lst base)
       (if (pair? lst)
