@@ -5,27 +5,27 @@
 (declare
  (extended-bindings))
 
-(define exId "examples")
-(define inDevId "in-dev")
-(define grClass "ex-gr")
-(define plusClass "plus")
+(define ex-id "examples")
+(define dev-id "in-dev")
+(define gr-class "ex-gr")
+(define plus-class "plus")
 
-(define insertLinks
+(define insert-links
   (lambda ()
     (define examples
       (list (list "." "scm2js")
             (list "Game of Life" "game-of-life")))
-    (define inDev
+    (define dev
       (list (list "Card game" "card-game")
             (list "Chat room" "chat-room")
             (list "Form" "form")
             (list "Login system" "login-system")))
-    (define (getExampleContent lst base)
+    (define (get-inserted-content lst base)
       (if (pair? lst)
           (let ((page (car lst)))
             (begin
               (console.log "ITER")
-              (getExampleContent (cdr lst)
+              (get-inserted-content (cdr lst)
                                  (string-append base
                                                 "<li><span class='bullet'></span><a href='https://roropincho.github.io/"
                                                 (cadr page)
@@ -35,13 +35,13 @@
                                                 (cadr page)
                                                 "' target='_blank'><span></span>git repo</a></li>"))))
           base))
-    (setInnerHTML (getElementById exId)
-                  (getExampleContent examples ""))
-    (setInnerHTML (getElementById inDevId)
-                  (getExampleContent inDev ""))))
+    (set-inner-html (get-element-by-id  ex-id)
+                  (get-inserted-content examples ""))
+    (set-inner-html (get-element-by-id  dev-id)
+                  (get-inserted-content dev ""))))
 
 (##inline-host-statement "document.title = 'Index of Scheme to Javascript projects';")
-(appendHTML (querySelector "head")
+(append-html (query-selector "head")
             (<style> type: "text/css"
                      (string-append "* {"
                                       "border: 0;"
@@ -64,10 +64,10 @@
                                       "margin-bottom: 0;"
                                       "padding: 25px;"
                                     "}"
-                                    "." grClass " {"
+                                    "." gr-class " {"
                                       "position: relative;"
                                     "}"
-                                    "input, ." plusClass " {"
+                                    "input, ." plus-class " {"
                                       "position: absolute;"
                                       "right: 0;"
                                       "top: 10px;"
@@ -81,7 +81,7 @@
                                     "input:hover {"
                                       "cursor: pointer;"
                                     "}"
-                                    "input:hover + ." plusClass " {"
+                                    "input:hover + ." plus-class " {"
                                       "background-color: darkslategrey;"
                                       "cursor: pointer;"
                                     "}"
@@ -92,14 +92,14 @@
                                     "input:checked + div + div {"
                                       "height: 100%;"
                                     "}"
-                                    "." plusClass " {"
+                                    "." plus-class " {"
                                       "border: 2px solid white;"
                                       "border-radius: 50%;"
                                       "height: 21px;"
                                       "width: 21px;"
                                       "z-index: 2;"
                                     "}"
-                                    "." plusClass " div {"
+                                    "." plus-class " div {"
                                       "background-color: white;"
                                       "height: 2px;"
                                       "left: 50%;"
@@ -108,7 +108,7 @@
                                       "transform: translate(-50%, -50%);"
                                       "width: 11px;"
                                     "}"
-                                    "input:not(:checked) + ." plusClass " div:nth-child(even) {"
+                                    "input:not(:checked) + ." plus-class " div:nth-child(even) {"
                                       "transform: translate(-50%, -50%) rotate(90deg);"
                                     "}"
                                     "h2 {"
@@ -166,19 +166,19 @@
                                       "right: 0;"
                                     "}")))
 (document.write (<h1> "Scheme to Javascript examples"))
-(document.write (<div> class: grClass
+(document.write (<div> class: gr-class
                        (<h2> "Finished examples")
                        (<input> type: 'checkbox
                                 checked:)
-                       (<div> class: plusClass
+                       (<div> class: plus-class
                               (<div>)
                               (<div>))
-                       (<div> (<ul> id: exId))))
-(document.write (<div> class: grClass
+                       (<div> (<ul> id: ex-id))))
+(document.write (<div> class: gr-class
                        (<h2> "Examples under construction")
                        (<input> type: 'checkbox)
-                       (<div> class: plusClass
+                       (<div> class: plus-class
                               (<div>)
                               (<div>))
-                       (<div> (<ul> id: inDevId))))
-(insertLinks)
+                       (<div> (<ul> id: dev-id))))
+(insert-links)
