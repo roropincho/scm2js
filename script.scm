@@ -9,6 +9,8 @@
 
 (define dev-id "in-dev")
 
+(define bullet-class "bullet")
+
 (define gr-class "ex-gr")
 
 (define plus-class "plus")
@@ -24,30 +26,32 @@
       ("Form" "form")
       ("Login system" "login-system")))
 
-  (define (get-inserted-content lst base)
-    (if (pair? lst)
-        (let ((page (car lst)))
-          (begin
-            (console.log "ITER")
-            (get-inserted-content
-             (cdr lst)
-             (append-strings
-              `(,base
-                "<li><span class='bullet'></span><a href='https://roropincho.github.io/"
-                ,(cadr page)
-                "' target='_blank'><span></span>"
-                ,(car page)
-                "</a> : <a href='https://github.com/roropincho/"
-                ,(cadr page)
-                "' target='_blank'><span></span>git repo</a></li>")))))
-        base))
+  (define (page-links page)
+    (let ((part-of-url (cadr page)))
+      (html->string
+       (<li> (<span> class: bullet-class)
+             (<a> target: "_blank"
+                  href: (string-append
+                         "https://roropincho.github.io/"
+                         part-of-url)
+                  (<span>)
+                  (car page))
+             " : "
+             (<a> target: "_blank"
+                  href: (string-append
+                         "https://github.com/roropincho/"
+                         part-of-url)
+                  (<span>)
+                  "git repo")))))
 
-  (set-inner-html
-   (get-element-by-id  ex-id)
-   (get-inserted-content examples ""))
-  (set-inner-html
-   (get-element-by-id  dev-id)
-   (get-inserted-content dev "")))
+  (define (insert-list-links id lst)
+    (set-inner-html
+     (get-element-by-id id)
+     (append-strings
+      (map page-links lst))))
+
+  (insert-list-links ex-id examples)
+  (insert-list-links dev-id dev))
 
 (##inline-host-statement "document.title = 'Index of Scheme to Javascript projects';")
 
@@ -144,7 +148,7 @@
      "li:not(:first-of-type) {"
        "border-top: 1px solid darksalmon;"
      "}"
-     ".bullet {"
+     "." ,bullet-class " {"
        "border: 2px solid darksalmon;"
        "border-radius: 50%;"
        "display: inline-block;"
