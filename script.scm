@@ -6,19 +6,24 @@
  (extended-bindings))
 
 (define ex-id "examples")
+
 (define dev-id "in-dev")
+
 (define gr-class "ex-gr")
+
 (define plus-class "plus")
 
 (define (insert-links)
     (define examples
       '(("." "scm2js")
         ("Game of Life" "game-of-life")))
+
     (define dev
       '(("Card game" "card-game")
         ("Chat room" "chat-room")
         ("Form" "form")
         ("Login system" "login-system")))
+
     (define (get-inserted-content lst base)
       (if (pair? lst)
           (let ((page (car lst)))
