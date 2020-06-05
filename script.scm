@@ -10,8 +10,7 @@
 (define gr-class "ex-gr")
 (define plus-class "plus")
 
-(define insert-links
-  (lambda ()
+(define (insert-links)
     (define examples
       '(("." "scm2js")
         ("Game of Life" "game-of-life")))
@@ -38,7 +37,7 @@
     (set-inner-html (get-element-by-id  ex-id)
                   (get-inserted-content examples ""))
     (set-inner-html (get-element-by-id  dev-id)
-                  (get-inserted-content dev ""))))
+                  (get-inserted-content dev "")))
 
 (##inline-host-statement "document.title = 'Index of Scheme to Javascript projects';")
 (append-html (query-selector "head")
