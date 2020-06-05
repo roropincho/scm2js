@@ -13,13 +13,13 @@
 (define insert-links
   (lambda ()
     (define examples
-      (list (list "." "scm2js")
-            (list "Game of Life" "game-of-life")))
+      '(("." "scm2js")
+        ("Game of Life" "game-of-life")))
     (define dev
-      (list (list "Card game" "card-game")
-            (list "Chat room" "chat-room")
-            (list "Form" "form")
-            (list "Login system" "login-system")))
+      '(("Card game" "card-game")
+        ("Chat room" "chat-room")
+        ("Form" "form")
+        ("Login system" "login-system")))
     (define (get-inserted-content lst base)
       (if (pair? lst)
           (let ((page (car lst)))
