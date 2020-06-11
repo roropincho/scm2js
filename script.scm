@@ -15,108 +15,109 @@
 
 (define plus-class "plus")
 
+(define examples
+  '(("." "scm2js")
+    ("Game of Life" "game-of-life")))
+
+(define dev
+  '(("Card game" "card-game")
+    ("Chat room" "chat-room")
+    ("Form" "form")
+    ("Login system" "login-system")))
+
+(define (page-links page)
+  (let ((part-of-url (cadr page)))
+    (html->string
+     (<li> (<span> class: bullet-class)
+           (<a> target: "_blank"
+                href: (string-append
+                       "https://roropincho.github.io/"
+                       part-of-url)
+                (<span>)
+                (car page))
+           " : "
+           (<a> target: "_blank"
+                href: (string-append
+                       "https://github.com/roropincho/"
+                       part-of-url)
+                (<span>)
+                "git repo")))))
+
+(define (insert-list-links id lst)
+  (set-inner-html
+   (get-element-by-id id)
+   (append-strings
+    (map page-links lst))))
+
 (define (insert-links)
-  (define examples
-    '(("." "scm2js")
-      ("Game of Life" "game-of-life")))
-
-  (define dev
-    '(("Card game" "card-game")
-      ("Chat room" "chat-room")
-      ("Form" "form")
-      ("Login system" "login-system")))
-
-  (define (page-links page)
-    (let ((part-of-url (cadr page)))
-      (html->string
-       (<li> (<span> class: bullet-class)
-             (<a> target: "_blank"
-                  href: (string-append
-                         "https://roropincho.github.io/"
-                         part-of-url)
-                  (<span>)
-                  (car page))
-             " : "
-             (<a> target: "_blank"
-                  href: (string-append
-                         "https://github.com/roropincho/"
-                         part-of-url)
-                  (<span>)
-                  "git repo")))))
-
-  (define (insert-list-links id lst)
-    (set-inner-html
-     (get-element-by-id id)
-     (append-strings
-      (map page-links lst))))
-
   (insert-list-links ex-id examples)
   (insert-list-links dev-id dev))
 
-(##inline-host-statement "document.title = 'Index of Scheme to Javascript projects';")
+(begin
+  (##inline-host-statement "document.title = 'Index of Scheme to Javascript projects';")
 
-(append-html
- (query-selector "head")
- (<style>
-  type: "text/css"
-  (append-strings
-   `("* {"
+  (append-html
+   (query-selector "head")
+   (<style>
+    type: "text/css"
+    (append-strings
+     `("* {"
        "border: 0;"
        "border-collapse: collapse;"
        "margin: 0;"
        "padding: 0;"
        "transition: 0.25s background-color, 0.25s color, 0.25s height, 0.25s opacity, 0.25s right, 0.25s transform;"
-     "}"
-     "body {"
+       "}"
+       "body {"
        "color: darkslategrey;"
        "font-family: sans-serif;"
        "font-size: 15px;"
        "margin: 25px;"
-     "}"
-     "h1 {"
+       "}"
+       "h1 {"
        "background-color: darkslategrey;"
        "color: white;"
        "font-size: 30px;"
        "margin: -25px;"
        "margin-bottom: 0;"
        "padding: 25px;"
-     "}"
-     "." ,gr-class " {"
+       "}"
+       "." ,gr-class " {"
        "position: relative;"
-     "}"
-     "input, ." ,plus-class " {"
+       "}"
+       "input, ." ,plus-class " {"
        "position: absolute;"
        "right: 0;"
        "top: 10px;"
-     "}"
-     "input {"
+       "}"
+       "input {"
        "height: 25px;"
        "opacity: 0;"
        "width: 25px;"
        "z-index: 3;"
-     "}"
-     "input:hover {"
+       "}"
+       "input:hover {"
        "cursor: pointer;"
-     "}"
-     "input:hover + ." ,plus-class " {"
+       "}"
+       "input:hover + ." ,plus-class " {"
        "background-color: darkslategrey;"
        "cursor: pointer;"
-     "}"
-     "input + div + div {"
+       "}"
+       "input + div + div {"
        "height: 0;"
        "overflow: hidden;"
-     "}"
-     "input:checked + div + div {"
+       "}"
+       "input:checked + div + div {"
        "height: 100%;"
-     "}"
-     "." ,plus-class " {"
+       "}"
+       "." ,plus-class " {"
        "border: 2px solid white;"
        "border-radius: 50%;"
        "height: 21px;"
        "width: 21px;"
        "z-index: 2;"
-     "}"
-     "." ,plus-class " div {"
+       "}"
+       "." ,plus-class " div {"
        "background-color: white;"
        "height: 2px;"
        "left: 50%;"
@@ -124,11 +125,11 @@
        "top: 50%;"
        "transform: translate(-50%, -50%);"
        "width: 11px;"
-     "}"
-     "input:not(:checked) + ." ,plus-class " div:nth-child(even) {"
+       "}"
+       "input:not(:checked) + ." ,plus-class " div:nth-child(even) {"
        "transform: translate(-50%, -50%) rotate(90deg);"
-     "}"
-     "h2 {"
+       "}"
+       "h2 {"
        "background-color: darksalmon;"
        "border-bottom: 2px solid white;"
        "color: white;"
@@ -137,39 +138,39 @@
        "letter-spacing: 1px;"
        "margin: 0 -25px;"
        "padding: 10px 25px;"
-     "}"
-     "ul {"
+       "}"
+       "ul {"
        "list-style-type: none;"
        "margin: 0 0 50px 0;"
-     "}"
-     "li {"
+       "}"
+       "li {"
        "padding: 20px 0;"
-     "}"
-     "li:not(:first-of-type) {"
+       "}"
+       "li:not(:first-of-type) {"
        "border-top: 1px solid darksalmon;"
-     "}"
-     "." ,bullet-class " {"
+       "}"
+       "." ,bullet-class " {"
        "border: 2px solid darksalmon;"
        "border-radius: 50%;"
        "display: inline-block;"
        "height: 5px;"
        "margin: 0 7.5px 0 5px;"
        "width: 5px;"
-     "}"
-     "a, a:visited {"
+       "}"
+       "a, a:visited {"
        "color: lightslategrey;"
        "text-decoration: none;"
-     "}"
-     "a {"
+       "}"
+       "a {"
        "border: 1px solid lightslategrey;"
        "border-radius: 5px;"
        "padding: 5px 10px 6px 10px;"
        "position: relative;"
-     "}"
-     "a:hover {"
+       "}"
+       "a:hover {"
        "color: white;"
-     "}"
-     "a span {"
+       "}"
+       "a span {"
        "bottom: 0;"
        "color: lightslategrey;"
        "left: 0;"
@@ -177,32 +178,32 @@
        "right: 100%;"
        "top: 0;"
        "z-index: -1;"
-     "}"
-     "a:hover span {"
+       "}"
+       "a:hover span {"
        "background-color: lightslategrey;"
        "right: 0;"
-     "}"))))
+       "}"))))
 
-(document.write (<h1> "Scheme to Javascript examples"))
+  (document.write (<h1> "Scheme to Javascript examples"))
 
-(document.write
- (<div> class: gr-class
-        (<h2> "Finished examples")
-        (<input>
-         type: 'checkbox
-         checked:)
-        (<div> class: plus-class
-               (<div>)
-               (<div>))
-        (<div> (<ul> id: ex-id))))
+  (document.write
+   (<div> class: gr-class
+          (<h2> "Finished examples")
+          (<input>
+           type: 'checkbox
+           checked:)
+          (<div> class: plus-class
+                 (<div>)
+                 (<div>))
+          (<div> (<ul> id: ex-id))))
 
-(document.write
- (<div> class: gr-class
-        (<h2> "Examples under construction")
-        (<input> type: 'checkbox)
-        (<div> class: plus-class
-               (<div>)
-               (<div>))
-        (<div> (<ul> id: dev-id))))
+  (document.write
+   (<div> class: gr-class
+          (<h2> "Examples under construction")
+          (<input> type: 'checkbox)
+          (<div> class: plus-class
+                 (<div>)
+                 (<div>))
+          (<div> (<ul> id: dev-id))))
 
-(insert-links)
+  (insert-links))
