@@ -24,7 +24,7 @@
       (error "html->string : parameter 1 isn't an html object")))
 
 ; -------------------------------------------------------------------------
-; conversionc functions
+; conversion functions
 ; -------------------------------------------------------------------------
 
 (define-procedure (foreign->js (obj foreign))
