@@ -1,9 +1,12 @@
 (##include "~/gambit/lib/gambit#.scm")
 (##include "~/gambit/examples/web-server/html.scm")
 (##include "js.scm")
+;(##include "js-test.scm")
 
 (declare
  (extended-bindings))
+
+;(run-tests)
 
 (define ex-id "examples")
 
@@ -44,44 +47,45 @@
                 "git repo")))))
 
 (define (insert-list-links id lst)
-  (set-inner-html
-   (get-element-by-id id)
-   (append-strings
-    (map page-links lst))))
+  (element.innerHTML (document.getElementById id) (append-strings (map page-links lst))))
 
 (define (insert-links)
   (insert-list-links ex-id examples)
   (insert-list-links dev-id dev))
 
+(define new-link
+  (document.createElement "link"))
+
 (begin
   (##inline-host-statement "document.title = 'Index of Scheme to Javascript projects';")
 
-  (append-html
-   (query-selector "head")
-   (<link>
-    rel: "stylesheet"
-    href: "style.css"))
+  (element.setAttribute new-link "rel" "stylesheet")
+  (element.setAttribute new-link "href" "style.css")
+  (element.appendChild (.querySelector (document-obj) "head") new-link)
 
-  (document.write (<h1> "Scheme to Javascript examples"))
+  (document.write (html->string (<h1> "Scheme to Javascript examples")))
 
   (document.write
-   (<div> class: gr-class
-          (<h2> "Finished examples")
-          (<input>
-           type: 'checkbox
-           checked:)
-          (<div> class: plus-class
-                 (<div>)
-                 (<div>))
-          (<div> (<ul> id: ex-id))))
+   (html->string
+     (<div> class: gr-class
+            (<h2> "Finished examples")
+            (<input>
+            type: 'checkbox
+            checked:)
+            (<div> class: plus-class
+                   (<div>)
+                   (<div>))
+            (<div> (<ul> id: ex-id)))))
 
   (document.write
-   (<div> class: gr-class
-          (<h2> "Examples under construction")
-          (<input> type: 'checkbox)
-          (<div> class: plus-class
-                 (<div>)
-                 (<div>))
-          (<div> (<ul> id: dev-id))))
+   (html->string
+     (<div> class: gr-class
+            (<h2> "Examples under construction")
+            (<input> type: 'checkbox)
+            (<div> class: plus-class
+                   (<div>)
+                   (<div>))
+            (<div> (<ul> id: dev-id)))))
 
   (insert-links))
+
