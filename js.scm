@@ -1,6 +1,6 @@
 (##include "~/gambit/lib/gambit#.scm")
 (##include "~/gambit/lib/_gambit#.scm")
-(##include "~/gambit/examples/web-server/html.scm")
+(##include "html/html.scm")
 
 (declare
  (extended-bindings)
