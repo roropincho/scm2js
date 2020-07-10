@@ -13,14 +13,14 @@
 ;(##import (gambit))
 ;(##namespace ("html#"))
 ;(##include "html#.scm")
-
+#|
 (declare
   (standard-bindings)
   (extended-bindings)
   (block)
   (not safe)
 )
-
+|#
 ;==============================================================================
 
 ;;; All html tags are translated to scheme functions with name
