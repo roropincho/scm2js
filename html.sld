@@ -1,4 +1,5 @@
-(define-library (github.com/roropincho/scm2js html)
+(define-library (html)
+  (import (gambit))
   (export write-html
           <a>
           <abbr>
