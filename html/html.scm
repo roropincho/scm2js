@@ -1302,6 +1302,6 @@
   (if (with-exception-catcher
         (lambda (exc) #f)
         (lambda () (html? obj)))
-      (call-wth-output-string
+      (call-with-output-string
         (lambda (port) (write-html obj port)))
       (error "html->string : parameter 1 expected to be an html object")))
