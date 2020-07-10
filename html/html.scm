@@ -1,5 +1,3 @@
-(import (gambit))
-
 (declare
   (standard-bindings)
   (extended-bindings)
