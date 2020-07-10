@@ -2,6 +2,7 @@
   (import (gambit))
 
   (export write-html
+          html->string
           <a>
           <abbr>
           <acronym>
