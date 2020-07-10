@@ -12,8 +12,8 @@
 
 (import (gambit))
 
-(##namespace ("html#"))
-(##include "html#.scm")
+;(##namespace ("html#"))
+;(##include "html#.scm")
 
 (declare
   (standard-bindings)
