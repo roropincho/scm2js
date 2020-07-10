@@ -10,12 +10,9 @@
 
 ;==============================================================================
 
-(##namespace ("html#"))
-
-;(##include "~~lib/gambit#.scm")
-
 (import (gambit))
 
+(##namespace ("html#"))
 (##include "html#.scm")
 
 (declare
