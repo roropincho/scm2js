@@ -12,7 +12,9 @@
 
 (##namespace ("html#"))
 
-(##include "~~lib/gambit#.scm")
+;(##include "~~lib/gambit#.scm")
+
+(import (gambit))
 
 (##include "html#.scm")
 
