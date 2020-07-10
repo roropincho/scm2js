@@ -1,26 +1,11 @@
-;==============================================================================
+(import (gambit))
 
-; File: "html.scm", Time-stamp: <2008-12-15 11:53:45 feeley>
-
-; Copyright (c) 2000-2008 by Brad Lucier, All Rights Reserved.
-; Copyright (c) 2005-2008 by Marc Feeley, All Rights Reserved.
-
-; This is an attempt at a complete implementation of HTML 4.0 in
-; Scheme without any Netscape or Microsoft extensions.
-
-;==============================================================================
-
-;(##import (gambit))
-;(##namespace ("html#"))
-;(##include "html#.scm")
-#|
 (declare
   (standard-bindings)
   (extended-bindings)
   (block)
   (not safe)
 )
-|#
 ;==============================================================================
 
 ;;; All html tags are translated to scheme functions with name
