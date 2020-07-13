@@ -1,6 +1,7 @@
 (##include "~/gambit/lib/gambit#.scm")
+(##include "~/gambit/lib/_gambit#.scm")
 (##include "html/html.scm")
-(##include "js.scm")
+(##include "js/js.scm")
 ;(##include "js-test.scm")
 
 (declare

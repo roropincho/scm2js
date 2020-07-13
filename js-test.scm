@@ -1,10 +1,17 @@
 (##include "~/gambit/lib/gambit#.scm")
 (##include "~/gambit/lib/_gambit#.scm")
 (##include "html/html.scm")
-(##include "js.scm")
+(##include "js/js.scm")
 
 (declare
  (extended-bindings))
+
+(define (lst->string lst)
+  (call-with-output-string
+    (lambda (port)
+      (map
+	(lambda (elem) (display elem port))
+	lst))))
 
 (define (string-handler exc)
   "type error (there's still a bug with ##foreign-address when expecting a string)")
