@@ -1,5 +1,4 @@
-;(##include "~/gambit/lib/gambit#.scm")
-(##include "~/gambit/lib/_gambit#.scm")
+(##include "~~/lib/_gambit#.scm")
 
 (declare
  (extended-bindings)
