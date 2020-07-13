@@ -1,5 +1,5 @@
 (define-labrary (js)
-  (import (gambit) (_gambit))
+  (import (gambit))
 
   (export foreign->js
           js->foreign

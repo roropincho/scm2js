@@ -1,5 +1,5 @@
 (##include "~/gambit/lib/gambit#.scm")
-(##include "~/gambit/lib/_gambit#.scm")
+;(##include "~/gambit/lib/_gambit#.scm")
 (##include "html/html.scm")
 (##include "js/js.scm")
 
