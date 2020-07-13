@@ -1,6 +1,6 @@
 (import (gambit))
-(##include "html/html.scm")
-(##include "js/js.scm")
+(import github.com/roropincho/scm2js/html)
+(import github.com/roropincho/scm2js/js)
 ;(##include "js-test.scm")
 
 (declare
@@ -54,15 +54,21 @@
   (insert-list-links dev-id dev))
 
 (define new-link
-  (document.createElement "link"))
+  (let ((temp (document.createElement "link")))
+    (begin
+      (console.log (foreign->js temp))
+      (element.setAttribute temp "rel" "stylesheet")
+      (element.setAttribute temp "href" "style.css")
+      temp)))
+
+(define new-title
+  (let ((temp (document.createElement "title")))
+    (begin
+      (console.log (foreign->js temp))
+      (element.innerHTML temp "Index of Scheme to Javascript projects")
+      temp)))
 
 (begin
-  (##inline-host-statement "document.title = 'Index of Scheme to Javascript projects';")
-
-  (element.setAttribute new-link "rel" "stylesheet")
-  (element.setAttribute new-link "href" "style.css")
-  (element.appendChild (.querySelector (document-obj) "head") new-link)
-
   (document.write (html->string (<h1> "Scheme to Javascript examples")))
 
   (document.write
@@ -87,5 +93,9 @@
                    (<div>))
             (<div> (<ul> id: dev-id)))))
 
-  (insert-links))
+  (insert-links)
+
+  (element.appendChild (.querySelector (document-obj) "head") new-title)
+
+  (element.appendChild (.querySelector (document-obj) "head") new-link))
 
