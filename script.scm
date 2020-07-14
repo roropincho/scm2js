@@ -1,6 +1,6 @@
 (import (gambit))
-(import github.com/roropincho/scm2js/html)
-(import github.com/roropincho/scm2js/js)
+(##include "userlib/github.com/roropincho/scm2js/@/html/html.scm")
+(##include "userlib/github.com/roropincho/scm2js/@/js/js.scm")
 ;(##include "js-test.scm")
 
 (declare
