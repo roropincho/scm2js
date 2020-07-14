@@ -56,7 +56,6 @@
 (define new-link
   (let ((temp (document.createElement "link")))
     (begin
-      (console.log (foreign->js temp))
       (element.setAttribute temp "rel" "stylesheet")
       (element.setAttribute temp "href" "style.css")
       temp)))
@@ -64,7 +63,6 @@
 (define new-title
   (let ((temp (document.createElement "title")))
     (begin
-      (console.log (foreign->js temp))
       (element.innerHTML temp "Index of Scheme to Javascript projects")
       temp)))
 
