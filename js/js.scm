@@ -1,3 +1,4 @@
+(##include "~~/lib/gambit#.scm")
 (##include "~~/lib/_gambit#.scm")
 
 (declare

@@ -1,6 +1,4 @@
 (define-library (html)
-  (import (gambit))
-
   (export write-html
           html->string
           <a>

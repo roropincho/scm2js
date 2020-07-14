@@ -1,6 +1,4 @@
 (define-labrary (js)
-  (import (gambit))
-
   (export foreign->js
           js->foreign
           scm->js
